@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.cuilan.shop.order.entity.OrderItem" table="orderitem">
+		<!-- 主键 -->
+		<id name="itemid">
+			<generator class="native" />
+		</id>
+		<!-- 普通属性 -->
+		<property name="count" />
+		<property name="subtotal" />
+		<!-- 与商品的关联关系 -->
+		<many-to-one name="product" lazy="false"
+			class="cn.cuilan.shop.product.entity.Product" column="pid" />
+		<!-- 与订单的关联关系 -->
+		<many-to-one name="order" class="cn.cuilan.shop.order.entity.Order"
+			column="oid" />
+	</class>
+</hibernate-mapping>

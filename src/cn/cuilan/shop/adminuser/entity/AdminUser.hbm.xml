@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.cuilan.shop.adminuser.entity.AdminUser" table="adminuser">
+		<!-- 主键 -->
+		<id name="uid">
+			<generator class="native" />
+		</id>
+		<!-- 普通属性 -->
+		<property name="username" />
+		<property name="password" />
+	</class>
+</hibernate-mapping>

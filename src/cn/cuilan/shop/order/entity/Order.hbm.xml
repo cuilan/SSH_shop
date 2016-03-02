@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.cuilan.shop.order.entity.Order" table="orders">
+		<!-- 主键 -->
+		<id name="oid">
+			<generator class="native" />
+		</id>
+		<!-- 普通属性 -->
+		<property name="total" />
+		<property name="ordertime" />
+		<property name="state" />
+		<property name="name" />
+		<property name="addr" />
+		<property name="phone" />
+		<!-- 与用户的关联关系 -->
+		<many-to-one name="user" lazy="false"
+			class="cn.cuilan.shop.user.entity.User" column="uid" />
+		<!-- 与订单项的关联关系 -->
+		<set name="orderItems" order-by="itemid" lazy="false" cascade="save-update"><!-- 级联保存 -->
+			<key column="oid" />
+			<one-to-many class="cn.cuilan.shop.order.entity.OrderItem" />
+		</set>
+	</class>
+</hibernate-mapping>

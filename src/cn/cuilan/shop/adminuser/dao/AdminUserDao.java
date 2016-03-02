@@ -1,0 +1,35 @@
+package cn.cuilan.shop.adminuser.dao;
+
+import java.util.List;
+
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import cn.cuilan.shop.adminuser.entity.AdminUser;
+
+/**
+ * 后台管理的持久层
+ * 
+ * @author 翠兰123
+ * @date 2015年3月26日
+ */
+public class AdminUserDao extends HibernateDaoSupport {
+
+	/**
+	 * 持久层登陆的方法
+	 * 
+	 * @param adminUser
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public AdminUser login(AdminUser adminUser) {
+		String hql = "from AdminUser where username = ? and password = ?";
+		List<AdminUser> list = this.getHibernateTemplate().find(hql,
+				adminUser.getUsername(), adminUser.getPassword());
+		if (list != null && list.size() > 0) {
+			return list.get(0);
+		} else {
+			return null;
+		}
+	}
+
+}
